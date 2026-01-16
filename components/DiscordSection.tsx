@@ -59,10 +59,16 @@ export default function DiscordSection() {
               })}
             </div>
             
-            <button className="group h-12 sm:h-14 px-6 sm:px-8 rounded-lg font-bold text-base sm:text-lg transition-all hover:scale-105 w-full sm:w-auto" style={{ background: 'linear-gradient(135deg, var(--ember-gold), var(--victory-gold))', color: 'var(--deep-night)', boxShadow: '0 0 30px rgba(245,178,58,0.5)' }}>
+            <a 
+              href="https://discord.gg/VusfRNnY"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group h-12 sm:h-14 px-6 sm:px-8 rounded-lg font-bold text-base sm:text-lg transition-all hover:scale-105 w-full sm:w-auto inline-flex items-center justify-center" 
+              style={{ background: 'linear-gradient(135deg, var(--ember-gold), var(--victory-gold))', color: 'var(--deep-night)', boxShadow: '0 0 30px rgba(245,178,58,0.5)' }}
+            >
               <MessageCircle className="inline-block mr-2 h-4 w-4 sm:h-5 sm:w-5 transition-transform group-hover:scale-110" />
               Join Discord Server
-            </button>
+            </a>
           </div>
           
           {/* Right Visual */}
@@ -116,7 +122,7 @@ export default function DiscordSection() {
                     ))}
                   </div>
                   <span className="text-xs sm:text-sm" style={{ color: 'var(--secondary-text)' }}>
-                    <span className="font-semibold" style={{ color: 'var(--primary-text)' }}>150+</span> members online
+                    Governors waiting, join them!
                   </span>
                 </div>
               </div>

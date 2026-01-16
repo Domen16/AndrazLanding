@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
+import Image from 'next/image';
 
 export default function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -19,8 +20,8 @@ export default function Navbar() {
 
   const navLinks = [
     { label: "About", href: "#about" },
+    { label: "Features", href: "#features" },
     { label: "How It Works", href: "#how-it-works" },
-    { label: "Waitlist", href: "#waitlist" },
     { label: "Discord", href: "#discord" },
   ];
 
@@ -34,6 +35,8 @@ export default function Navbar() {
         top: offsetPosition,
         behavior: 'smooth'
       });
+    } else {
+      window.location.href = `/${href}`;
     }
   };
 
@@ -47,8 +50,11 @@ export default function Navbar() {
       <div className="w-full max-w-7xl mx-auto px-4 sm:px-6">
         <div className="flex h-14 items-center justify-between sm:h-16 md:h-20">
           {/* Logo */}
-          <a href="#" className="text-lg font-bold sm:text-xl md:text-2xl" style={{ fontFamily: "'Cinzel', serif" }}>
-            <span style={{ color: 'var(--ember-gold)' }}>RoK</span> <span style={{ color: 'var(--primary-text)' }} className="hidden sm:inline">Strategy Hub</span>
+          <a href="/" className="flex items-center gap-2">
+            <Image src="/logo.png" alt="ROK STRATEGIST" width={60} height={60} className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12" />
+            <span className="text-sm font-bold sm:text-lg md:text-xl lg:text-2xl" style={{ fontFamily: "'Cinzel', serif" }}>
+              <span style={{ color: 'var(--ember-gold)' }}>ROK</span> <span style={{ color: 'var(--primary-text)' }}>STRATEGIST</span>
+            </span>
           </a>
 
           {/* Desktop Navigation */}

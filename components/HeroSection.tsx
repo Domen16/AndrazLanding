@@ -50,7 +50,7 @@ export default function HeroSection() {
         <div className="absolute inset-0" style={{ background: 'linear-gradient(to right, var(--deep-night) 0%, transparent 50%, var(--deep-night) 100%)' }}></div>
       </div>
 
-      <div className="absolute inset-0 z-5" style={{ background: 'linear-gradient(to bottom, transparent 0%, rgba(15,14,13,0.7) 100%)' }}></div>
+      <div className="absolute inset-0 z-5" style={{ background: 'linear-gradient(to bottom, transparent 0%, rgba(15,14,13,0.5) 100%)' }}></div>
 
       {/* AI Strategy Assistant - Top Left */}
       <div className="absolute left-8 top-20 z-0 hidden lg:left-16 lg:top-24 lg:block">
@@ -59,33 +59,14 @@ export default function HeroSection() {
             <h3 className="text-sm font-bold" style={{ color: 'var(--ember-gold)', fontFamily: "'Cinzel', serif" }}>AI Strategy Assistant</h3>
           </div>
           <div className="p-3 space-y-2" style={{ minHeight: '180px' }}>
-            <div className="flex justify-start">
-              <div className="px-3 py-2 rounded-lg max-w-[85%]" style={{ background: 'linear-gradient(135deg, rgba(245,178,58,0.2), rgba(245,178,58,0.1))', border: '1px solid rgba(245,178,58,0.3)', boxShadow: '0 0 10px rgba(245,178,58,0.2)' }}>
-                <p className="text-xs" style={{ color: 'var(--primary-text)' }}>Focus on Sun Tzu and Joan of Arc for your tier</p>
-              </div>
-            </div>
             <div className="flex justify-end">
               <div className="px-3 py-2 rounded-lg max-w-[85%]" style={{ background: 'rgba(60,58,56,0.8)' }}>
-                <p className="text-xs" style={{ color: 'var(--secondary-text)' }}>What about events?</p>
+                <p className="text-xs" style={{ color: 'var(--secondary-text)' }}>What Commander should I invest in?</p>
               </div>
             </div>
             <div className="flex justify-start">
               <div className="px-3 py-2 rounded-lg max-w-[85%]" style={{ background: 'linear-gradient(135deg, rgba(245,178,58,0.2), rgba(245,178,58,0.1))', border: '1px solid rgba(245,178,58,0.3)', boxShadow: '0 0 10px rgba(245,178,58,0.2)' }}>
-                <p className="text-xs" style={{ color: 'var(--primary-text)' }}>Prioritize Mightiest Governor this week for maximum rewards</p>
-              </div>
-            </div>
-            <div className="flex justify-end">
-              <div className="px-3 py-2 rounded-lg max-w-[85%]" style={{ background: 'rgba(60,58,56,0.8)' }}>
-                <p className="text-xs" style={{ color: 'var(--secondary-text)' }}>How much should I spend?</p>
-              </div>
-            </div>
-            <div className="flex justify-start">
-              <div className="px-3 py-2 rounded-lg" style={{ background: 'linear-gradient(135deg, rgba(245,178,58,0.2), rgba(245,178,58,0.1))', border: '1px solid rgba(245,178,58,0.3)' }}>
-                <div className="flex gap-1">
-                  <span className="w-1.5 h-1.5 rounded-full" style={{ background: 'var(--ember-gold)', animation: 'pulse 1.4s ease-in-out infinite' }}></span>
-                  <span className="w-1.5 h-1.5 rounded-full" style={{ background: 'var(--ember-gold)', animation: 'pulse 1.4s ease-in-out 0.2s infinite' }}></span>
-                  <span className="w-1.5 h-1.5 rounded-full" style={{ background: 'var(--ember-gold)', animation: 'pulse 1.4s ease-in-out 0.4s infinite' }}></span>
-                </div>
+                <p className="text-xs" style={{ color: 'var(--primary-text)' }}>Since you are a Free-to-Play going to KvK 1, Sun Tzu Aethfled is the best march for you right now.</p>
               </div>
             </div>
           </div>
@@ -108,7 +89,7 @@ export default function HeroSection() {
         <div className="backdrop-blur-md rounded-xl p-4 opacity-75" style={{ background: 'rgba(28,27,25,0.7)', border: '2px solid var(--ember-gold)', boxShadow: '0 0 30px rgba(245,178,58,0.4)', animation: 'gentleFloat 8s ease-in-out infinite', animationDelay: '2s', width: '200px' }}>
           <h3 className="text-sm font-bold mb-3" style={{ color: 'var(--ember-gold)' }}>Commander Progress</h3>
           <div className="space-y-2">
-            {['Sun Tzu', 'Joan of Arc', 'Boudica'].map((commander, idx) => (
+            {['Qin Shi Huang', 'Liu Che', 'Achilles'].map((commander, idx) => (
               <div key={idx}>
                 <div className="flex justify-between text-xs mb-1" style={{ color: 'var(--primary-text)' }}>
                   <span>{commander}</span>
@@ -123,13 +104,26 @@ export default function HeroSection() {
         </div>
       </div>
 
-      {/* KvK Performance - Bottom Right */}
+      {/* Kill Points - Bottom Right */}
       <div className="absolute right-32 bottom-32 z-0 hidden lg:right-56 lg:bottom-40 xl:block">
         <div className="backdrop-blur-md rounded-xl p-3 opacity-75" style={{ background: 'rgba(28,27,25,0.7)', border: '2px solid var(--ember-gold)', boxShadow: '0 0 30px rgba(245,178,58,0.4)', animation: 'gentleFloat 7s ease-in-out infinite', animationDelay: '1s', width: '200px' }}>
-          <h3 className="text-sm font-bold mb-3" style={{ color: 'var(--ember-gold)' }}>KvK Performance</h3>
-          <div className="flex items-end justify-between gap-2 h-16">
-            {[0.6, 0.9, 0.7, 0.85, 0.5, 0.75].map((height, idx) => (
-              <div key={idx} className="flex-1 rounded-t" style={{ height: `${height * 100}%`, background: idx % 2 === 0 ? 'var(--ember-gold)' : 'var(--insight-blue)' }} />
+          <h3 className="text-sm font-bold mb-3" style={{ color: 'var(--ember-gold)' }}>Kill Points</h3>
+          <div className="flex items-end justify-between gap-2" style={{ height: '64px' }}>
+            {[
+              { label: 'T1', value: '2M', height: 25 },
+              { label: 'T2', value: '18M', height: 40 },
+              { label: 'T3', value: '30M', height: 55 },
+              { label: 'T4', value: '700M', height: 100 },
+              { label: 'T5', value: '250M', height: 75 }
+            ].map((tier, idx) => (
+              <div key={idx} className="flex-1 flex flex-col items-center" style={{ height: '100%' }}>
+                <div className="w-full flex flex-col justify-end" style={{ height: '48px' }}>
+                  <div className="w-full rounded-t relative flex items-center justify-center" style={{ height: `${tier.height}%`, background: idx % 2 === 0 ? 'var(--ember-gold)' : 'var(--insight-blue)' }}>
+                    <span className="text-[7px] font-bold" style={{ color: 'var(--deep-night)' }}>{tier.value}</span>
+                  </div>
+                </div>
+                <span className="text-[8px] mt-1" style={{ color: 'var(--secondary-text)' }}>{tier.label}</span>
+              </div>
             ))}
           </div>
         </div>
@@ -168,7 +162,7 @@ export default function HeroSection() {
                 type="email" 
                 value={email} 
                 onChange={(e) => setEmail(e.target.value)} 
-                placeholder="Enter your email for early access" 
+                placeholder="Enter your email to join the waitlist" 
                 required 
                 disabled={emailStatus === 'loading' || emailStatus === 'success'} 
                 className="flex-1 px-4 sm:px-6 py-3 sm:py-4 rounded-lg outline-none transition-all text-base sm:text-lg" 
@@ -180,7 +174,7 @@ export default function HeroSection() {
                 className="px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-bold text-sm sm:text-base transition-all hover:scale-105 disabled:opacity-50" 
                 style={{ background: 'linear-gradient(135deg, var(--ember-gold), var(--victory-gold))', color: 'var(--deep-night)', boxShadow: '0 0 30px rgba(245,178,58,0.5)' }}
               >
-                {emailStatus === 'loading' ? 'Joining...' : emailStatus === 'success' ? '✓ Joined!' : 'Get Early Access'}
+                {emailStatus === 'loading' ? 'Joining...' : emailStatus === 'success' ? '✓ Joined!' : 'Join Waitlist'}
               </button>
             </form>
             

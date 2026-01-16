@@ -1,6 +1,7 @@
 import Navbar from '@/components/Navbar';
 import HeroSection from '@/components/HeroSection';
 import DescriptionSection from '@/components/DescriptionSection';
+import FeaturesShowcase from '@/components/FeaturesShowcase';
 import HowItWorksSection from '@/components/HowItWorksSection';
 import WaitlistSection from '@/components/WaitlistSection';
 import DiscordSection from '@/components/DiscordSection';
@@ -14,6 +15,8 @@ export default function HomePage() {
       <HeroSection />
       <SectionDivider />
       <DescriptionSection />
+      <SectionDivider />
+      <FeaturesShowcase />
       <SectionDivider />
       <HowItWorksSection />
       <SectionDivider />

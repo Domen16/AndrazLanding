@@ -64,8 +64,8 @@ export default function WaitlistSection() {
                 </span>
                 
                 <h2 className="mb-4 sm:mb-6 text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold leading-tight" style={{ color: 'var(--primary-text)', fontFamily: "'Cinzel', serif" }}>
-                  Join the fight and claim your{" "}
-                  <span style={{ color: 'var(--ember-gold)' }}>strategic edge!</span>
+                  Become an early supporter and gain{" "}
+                  <span style={{ color: 'var(--ember-gold)' }}>exclusive benefits!</span>
                 </h2>
                 
                 <form onSubmit={handleSubmit} className="flex flex-col gap-3 sm:gap-4 sm:flex-row">
@@ -99,7 +99,7 @@ export default function WaitlistSection() {
                 <div className="mt-4 sm:mt-6 flex flex-wrap items-center gap-4 sm:gap-6 text-xs sm:text-sm" style={{ color: 'var(--secondary-text)' }}>
                   <div className="flex items-center gap-2">
                     <Users className="h-3 w-3 sm:h-4 sm:w-4" style={{ color: 'var(--ember-gold)' }} />
-                    <span>500+ governors already waiting</span>
+                    <span>Governors waiting, join them!</span>
                   </div>
                   <div className="flex items-center gap-2">
                     <div className="h-2 w-2 rounded-full animate-pulse" style={{ background: 'var(--ember-gold)' }} />
@@ -111,11 +111,11 @@ export default function WaitlistSection() {
           </div>
           
           {/* Character extending beyond card */}
-          <div className="absolute bottom-0 right-0 hidden pointer-events-none lg:block">
+          <div className="absolute bottom-0 right-0 hidden pointer-events-none lg:block" style={{ transform: 'translateX(10%) translateY(5%)' }}>
             <img 
               src="/king-commander.png" 
               alt="King Commander" 
-              className="h-[500px] w-auto object-contain object-bottom xl:h-[450px]"
+              className="h-[600px] w-auto object-contain object-bottom xl:h-[550px]"
               style={{ 
                 filter: 'drop-shadow(0 0 30px rgba(245,178,58,0.3))'
               }}
