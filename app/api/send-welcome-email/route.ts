@@ -24,13 +24,13 @@ export async function POST(request: NextRequest) {
     const htmlTemplate = fs.readFileSync(templatePath, 'utf-8');
 
     const params = {
-      Source: process.env.FROM_EMAIL || 'no-reply@rokstrategist.com',
+      Source: 'ROK STRATEGIST <no-reply@rokstrategist.com>',
       Destination: {
         ToAddresses: [email],
       },
       Message: {
         Subject: {
-          Data: 'Welcome to ROK STRATEGIST - You\'re on the Waitlist!',
+          Data: '🎮 Welcome to ROK STRATEGIST - Your Strategic Advantage Awaits!',
           Charset: 'UTF-8',
         },
         Body: {
@@ -38,8 +38,29 @@ export async function POST(request: NextRequest) {
             Data: htmlTemplate,
             Charset: 'UTF-8',
           },
+          Text: {
+            Data: `Welcome to ROK STRATEGIST!
+
+Thank you for joining our waitlist. You're now part of an exclusive group of governors who will get early access to the most advanced Rise of Kingdoms strategy platform.
+
+What you can expect:
+- Weekly Event Analysis with ROI calculations
+- Personalized Strategies based on your spending tier and KvK stage
+- AI-Powered Insights for instant strategy answers
+- 50% OFF First Month as an early supporter
+
+We'll keep you updated on our progress and notify you as soon as we launch.
+
+Stay strategic,
+The ROK STRATEGIST Team
+
+Visit us: https://rokstrategist.com`,
+            Charset: 'UTF-8',
+          },
         },
       },
+      ConfigurationSetName: undefined,
+      ReplyToAddresses: ['contact@rokstrategist.com'],
     };
 
     const command = new SendEmailCommand(params);
