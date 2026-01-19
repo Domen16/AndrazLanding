@@ -3,6 +3,20 @@ import { SESClient, SendEmailCommand } from '@aws-sdk/client-ses';
 import fs from 'fs';
 import path from 'path';
 
+function createSESClient() {
+  if (!process.env.AWS_ACCESS_KEY_ID || !process.env.AWS_SECRET_ACCESS_KEY) {
+    throw new Error('AWS credentials not configured');
+  }
+  
+  return new SESClient({
+    region: process.env.AWS_REGION || 'eu-central-1',
+    credentials: {
+      accessKeyId: process.env.AWS_ACCESS_KEY_ID,
+      secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
+    },
+  });
+}
+
 export async function POST(request: NextRequest) {
   try {
     const { email } = await request.json();
@@ -11,14 +25,7 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: 'Email is required' }, { status: 400 });
     }
 
-    // Create SES client with credentials
-    const sesClient = new SESClient({
-      region: process.env.AWS_REGION || 'eu-central-1',
-      credentials: {
-        accessKeyId: process.env.AWS_ACCESS_KEY_ID!,
-        secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY!,
-      },
-    });
+    const sesClient = createSESClient();
 
     // Read HTML template
     const templatePath = path.join(process.cwd(), 'email-templates', 'waitlist-welcome.html');
