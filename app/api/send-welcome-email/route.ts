@@ -24,7 +24,7 @@ export async function POST(request: NextRequest) {
     const htmlTemplate = fs.readFileSync(templatePath, 'utf-8');
 
     const params = {
-      Source: process.env.FROM_EMAIL || 'noreply@rokstrategist.com',
+      Source: process.env.FROM_EMAIL || 'no-reply@rokstrategist.com',
       Destination: {
         ToAddresses: [email],
       },
