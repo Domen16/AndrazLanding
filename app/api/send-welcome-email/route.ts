@@ -3,10 +3,6 @@ import { SESClient, SendEmailCommand } from '@aws-sdk/client-ses';
 import fs from 'fs';
 import path from 'path';
 
-const sesClient = new SESClient({
-  region: process.env.AWS_REGION || 'eu-central-1',
-});
-
 export async function POST(request: NextRequest) {
   try {
     const { email } = await request.json();
@@ -14,6 +10,15 @@ export async function POST(request: NextRequest) {
     if (!email) {
       return NextResponse.json({ error: 'Email is required' }, { status: 400 });
     }
+
+    // Create SES client with credentials
+    const sesClient = new SESClient({
+      region: process.env.AWS_REGION || 'eu-central-1',
+      credentials: {
+        accessKeyId: process.env.AWS_ACCESS_KEY_ID!,
+        secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY!,
+      },
+    });
 
     // Read HTML template
     const templatePath = path.join(process.cwd(), 'email-templates', 'waitlist-welcome.html');
@@ -55,7 +60,6 @@ Visit us: https://rokstrategist.com`,
           },
         },
       },
-      ConfigurationSetName: undefined,
       ReplyToAddresses: ['contact@rokstrategist.com'],
     };
 
