@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { Sparkles, Users } from 'lucide-react';
 import { createClient } from '@supabase/supabase-js';
+import ProfileModal from './ProfileModal';
 
 const supabase = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_URL!,
@@ -13,26 +14,55 @@ export default function WaitlistSection() {
   const [email, setEmail] = useState('');
   const [emailStatus, setEmailStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
   const [emailMessage, setEmailMessage] = useState('');
+  const [showProfileModal, setShowProfileModal] = useState(false);
+  const [submittedEmail, setSubmittedEmail] = useState('');
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setEmailStatus('loading');
 
+    // Check if email already exists
+    const { data: existingUser, error: fetchError } = await supabase
+      .from('waitlist')
+      .select('email, spending_tier, kvk_stage')
+      .eq('email', email)
+      .single();
+
+    if (existingUser) {
+      // User exists - check if profile is complete
+      if (!existingUser.spending_tier || !existingUser.kvk_stage) {
+        setEmailMessage('Already on waitlist, Governor!');
+        setEmailStatus('error');
+        setSubmittedEmail(email);
+        setShowProfileModal(true);
+      } else {
+        setEmailMessage('Already on waitlist, Governor!');
+        setEmailStatus('error');
+      }
+      return;
+    }
+
+    // New user - insert
     const { error } = await supabase
       .from('waitlist')
       .insert({ email });
 
     if (error) {
-      if (error.code === '23505') {
-        setEmailMessage('Already on waitlist!');
-      } else {
-        setEmailMessage('Error. Try again.');
-      }
+      setEmailMessage('Error. Try again.');
       setEmailStatus('error');
     } else {
-      setEmailMessage('Success! We\'ll notify you.');
+      setEmailMessage('Success, Governor! You will be notified.');
       setEmailStatus('success');
+      setSubmittedEmail(email);
       setEmail('');
+      setShowProfileModal(true);
+      
+      // Send welcome email
+      fetch('/api/send-welcome-email', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email })
+      }).catch(err => console.error('Failed to send welcome email:', err));
     }
   };
   return (
@@ -123,6 +153,10 @@ export default function WaitlistSection() {
           </div>
         </div>
       </div>
+
+      {showProfileModal && (
+        <ProfileModal email={submittedEmail} onClose={() => setShowProfileModal(false)} />
+      )}
     </section>
   );
 }

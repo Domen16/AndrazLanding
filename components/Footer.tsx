@@ -13,8 +13,6 @@ export default function Footer() {
         top: offsetPosition,
         behavior: 'smooth'
       });
-    } else {
-      window.location.href = `/${href}`;
     }
   };
 
