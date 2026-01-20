@@ -8,10 +8,7 @@ function createSESClient() {
   
   return new SESClient({
     region: process.env.AWS_REGION || 'eu-central-1',
-    credentials: {
-      accessKeyId: "",
-      secretAccessKey: "",
-    },
+
   });
 }
 
