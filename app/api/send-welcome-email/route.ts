@@ -73,7 +73,7 @@ Visit us: https://rokstrategist.com`,
     const command = new SendEmailCommand(params);
     await sesClient.send(command);
 
-    return NextResponse.json({ success: true, message: 'Email sent successfully' });
+    return NextResponse.json({ success: true, message: 'Welcome email sent successfully' });
   } catch (error) {
     console.error('Error sending email:', error);
     return NextResponse.json(
